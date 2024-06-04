@@ -1,20 +1,11 @@
-Python import csv
-
 import pandas as pd
-
-df = pd.read_csv('source_path')
-
-print(df.head())
-
-
-
 import mysql.connector
 
 mydb = {
     'host': 'localhost',
-    'user': '****',
-    'password': '*********',
-    'database': 'database_name',
+    'user': 'root',
+    'password': '*****',
+    'database': '*****',
 }
 
 # Establish a connection to the MySQL database
@@ -25,7 +16,7 @@ try:
     cursor = connection.cursor()
 
     # Execute a simple SELECT query to retrieve all data from the fibonacci_table
-    query = "SELECT * FROM database_name"
+    query = "SELECT * FROM *****"
     cursor.execute(query)
 
     # Fetch all the rows from the result set
