@@ -1,35 +1,36 @@
-import pandas as pd
 import mysql.connector
-
-mydb = {
-    'host': 'localhost',
-    'user': 'root',
-    'password': '*****',
-    'database': '*****',
-}
-
-# Establish a connection to the MySQL database
-connection = mysql.connector.connect(**mydb)
+from mysql.connector import Error
 
 try:
-    # Create a cursor object to execute SQL queries
-    cursor = connection.cursor()
+    # Establish the connection
+    conn = mysql.connector.connect(
+        host='***.*.*.*',
+        port=3306,
+        database='NAME',
+        user='NAME',
+        password='BLANK'
+    )
 
-    # Execute a simple SELECT query to retrieve all data from the fibonacci_table
-    query = "SELECT * FROM *****"
-    cursor.execute(query)
+    if conn.is_connected():
+        print('Connected to MySQL database')
+        
+        # Create a cursor object
+        cursor = conn.cursor()
+        
+        # Execute a query
+        cursor.execute('SELECT * FROM *TABLE*')
+        
+        # Fetch all rows from the last executed statement
+        rows = cursor.fetchall()
+        
+        # Print the rows
+        for row in rows:
+            print(row)
 
-    # Fetch all the rows from the result set
-    rows = cursor.fetchall()
-
-    # Print the header
-    print("ID\tValue")
-
-    # Print each row
-    for row in rows:
-        print(f"{row[0]}\t{row[1]}")
-
+except Error as e:
+    print(f"Error: {e}")
 finally:
-    # Close the cursor and connection
-    cursor.close()
-    connection.close()
+    if conn.is_connected():
+        cursor.close()
+        conn.close()
+        print('MySQL connection is closed')
