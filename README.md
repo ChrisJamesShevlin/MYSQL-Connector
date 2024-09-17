@@ -10,7 +10,7 @@ This repository contains a Python script that demonstrates how to establish a co
 - [Usage](#usage)
 - [Customization](#customization)
 - [Error Handling](#error-handling)
-- [License](#license)
+
 
 ## Overview
 
@@ -116,10 +116,5 @@ finally:
         print('MySQL connection is closed')
 ```
 
-## License
-
-This project is licensed under the MIT License. See the [LICENSE](./LICENSE) file for more details.
-
----
 
 Feel free to contribute to this repository by opening an issue or submitting a pull request if you have suggestions or improvements.
